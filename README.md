@@ -1,7 +1,14 @@
 
+Whats needed?:
+
+- Using lang-lisp.js as starting point (recommended by GCP), create Rebol version
+
+- Send back to GCP as patch with test
+
+
 Story so far:
 
-- Taken the lang-lisp.js and only made slight amendments for Rebol.
+- Created a lang-rebol.js with only slight amendments to Lisp version
 
 - Multi-line string { } only work in simple cases (no embedded {} allowed at moment)
 
@@ -9,7 +16,11 @@ Story so far:
 
 - Only added few "statements" just to show it works! (see test-rebol.html)
 
-- Would like to build "keywords" straight from Rebol
+- Would like to build "statements" straight from Rebol
 
-- In fact it would be nice to build who JS file from Rebol!!!
+- In fact it would be nice to build whole JS file from Rebol!!!
 
+
+To test - clone repo and open the test.html files in web browser.
+
+Google Code Prettify - https://code.google.com/p/google-code-prettify/
