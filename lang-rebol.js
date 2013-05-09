@@ -23,23 +23,25 @@
  * Then put your code in an HTML tag like
  *      <pre class="prettyprint lang-rebol">(rebol code)</pre>
  *
- * I used http://www.devincook.com/goldparser/doc/meta-language/grammar-LISP.htm
- * as the basis, but added line comments that start with ; and changed the atom
- * production to disallow unquoted semicolons.
+ * I used lang-lisp.js as the basis and then amended to Rebol
  *
  * "Name"    = 'Rebol'
  * "Author"  = 'Carl Sassenrath'
  * "Version" = 'Minimal'
  * "About"   = 'Rebol - Relative Expression Based Object Language'
  *
- * ?? Is there a grammar/spec can refer to ??
- *
  * @author draegtun@gmail.com
  *
+ **
  * History
- *  0.0.1 - Barry Walsh (Draegtun) - big bang!
+ * -  0.0.1   8-May-2013    BW  big bang!
  *
- * Source - github page
+ * Contributors
+ * - BW     Barry Walsh (draegtun)
+ * 
+ * Grammar - http://reb4.me/r/rebol#Value
+ *
+ * Source - https://github.com/draegtun/PrettifyRebol
  *
  */
 
