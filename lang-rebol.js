@@ -18,7 +18,6 @@
  * @fileoverview
  * Registers a language handler for Rebol
  *
- *
  * To use, include prettify.js and this file in your HTML page.
  * Then put your code in an HTML tag like
  *      <pre class="prettyprint lang-rebol">(rebol code)</pre>
@@ -27,14 +26,17 @@
  *
  * "Name"    = 'Rebol'
  * "Author"  = 'Carl Sassenrath'
- * "Version" = 'Minimal'
+ * "Version" = 'rebol2|rebol3'
  * "About"   = 'Rebol - Relative Expression Based Object Language'
  *
  * @author draegtun@gmail.com
  *
- **
+ */
+
+/**
  * History
  * -  0.0.1   8-May-2013    BW  big bang!
+ * -  0.0.2   9-May-2013    BW  Slight restructure + multline strings improvement
  *
  * Contributors
  * - BW     Barry Walsh (draegtun)
@@ -65,7 +67,7 @@ PR['registerLangHandler'](
          // A line comment that starts with ;
          [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';'],
          //
-         // A double quoted single line string
+         // A double quoted single line string (NB. below allows multiline even though Rebol doesn't)
          [PR['PR_STRING'],      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
          //
          [PR['PR_KEYWORD'],     /^(?:func|print|foreach)\b/, null],
