@@ -37,6 +37,7 @@
  * History
  * -  0.0.1   8-May-2013    BW  big bang!
  * -  0.0.2   9-May-2013    BW  Slight restructure + multline strings improvement
+ * -  0.0.3   9-May-2013    BW  :get-word, set-word:, 'word-literal and some types added
  *
  * Contributors
  * - BW     Barry Walsh (draegtun)
@@ -57,6 +58,9 @@ PR['registerLangHandler'](
          // Whitespace
          [PR['PR_PLAIN'],       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
          //
+         // Constant - doesn't blow up here (see later).  But is it working (depends on CSS?)
+         [PR['PR_CONSTANT'],    /^(?:none|true|false|yes|no|on|off)/, null, ''],
+         //
          // Multi-line string {braces} - allowed within:  { ^{ ^}  
          [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}']
         ],
@@ -70,17 +74,35 @@ PR['registerLangHandler'](
          // A double quoted single line string (NB. below allows multiline even though Rebol doesn't)
          [PR['PR_STRING'],      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
          //
-         [PR['PR_KEYWORD'],     /^(?:func|print|foreach)\b/, null],
+         // Constants - below blows up when constant is found in markup :(
+         //[PR['PR_CONSTANT'], /^\b(?:none|true|false|yes|no|on|off)\b/, null],
          //
+         [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all)\b/, null],
+         //
+         // Types
+         // -- pair!
+         [PR['PR_TYPE'], /^[0-9]*x[0-9]*/],
+         // -- date! 
+         [PR['PR_TYPE'], /^\d{1,2}-\w{3,9}-\d{2,4}/ ],  // Simple 2-Jan-2013 regex for now
+         //
+         // Literals
+         // -- Generic literal (from lisp)
          [PR['PR_LITERAL'],
           /^[+\-]?(?:[0#]x[0-9a-f]+|\d+\/\d+|(?:\.\d+|\d+(?:\.\d*)?)(?:[ed][+\-]?\d+)?)/i],
-         // A single quote possibly followed by a word that optionally ends with
-         // = ! or ?.
-         [PR['PR_LITERAL'],
-          /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
+         // -- A single quote word
+         [PR['PR_LITERAL'], /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
+         //
+         // get-word "literals"
+         [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/],
+         //
+         // set-word "literals"
+         [PR['PR_DECLARATION'],  /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
+         //
+         // Some left over stuff from lisp
+         //
          // A word that optionally ends with = ! or ?.
-         [PR['PR_PLAIN'],
-          /^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
+         //[PR['PR_PLAIN'], /^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
+         //
          // A printable non-space non-special character
          [PR['PR_PUNCTUATION'], /^[^\w\t\n\r \xA0()\"\\\';]+/]
         ]),
