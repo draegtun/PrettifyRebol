@@ -28,7 +28,7 @@ Story so far:
 - And may build RegEx grammar up from scratch again and keep it *simple* Rebol
 
 - So at moment just fudging my way around lang-lisp.js & other GCP syntax file
-  (No docs... so it will is groping around)
+  (No docs... so lots of groping around in dark!)
 
 - Constants need testing
 
