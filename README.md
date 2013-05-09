@@ -13,7 +13,7 @@ Story so far:
 
 - Shebang! line added (as comment)
 
-- set-word: & get-word: with paths like block/1 added
+- set-word: & :get-word with paths like block/1 added
 
 - 'literal (single quote word) added
 
