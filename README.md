@@ -9,7 +9,9 @@ Story so far:
 
 - Created a lang-rebol.js with only slight amendments to Lisp version
 
-- Multi-line string { } only work in simple cases (no embedded {} allowed at moment)
+- Multi-line string { } works with caveat must use ^} for embedded closing brace.
+
+- Shebang! line added (as comment)
 
 - Literal types need adding (like 25-Dec-2012 10x90)
 

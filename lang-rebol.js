@@ -48,18 +48,28 @@
 PR['registerLangHandler'](
     PR['createSimpleLexer'](
         [
-         ['opn',             /^\[+/, null, '['],
-         ['clo',             /^\]+/, null, ']'],
-         // A line comment that starts with ;
-         [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';'],
+         // Rebol block/parens.  Is opn/clo really needed for Rebol?
+         ['opn',             /^[\(\[]+/, null, '(['],
+         ['clo',             /^[\)\]]+/, null, ')]'],
+         //
          // Whitespace
          [PR['PR_PLAIN'],       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
-         // A double quoted, possibly multi-line, string.
-         [PR['PR_STRING'],      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
-         [PR['PR_STRING'],      /^\{(?:[^\}\\]|\\[\s\S])*(?:\}|$)/, null, '{}']
+         //
+         // Multi-line string {braces} - allowed within:  { ^{ ^}  
+         [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}']
         ],
         [
+         // Script tag (shebang!)
+         [PR['PR_COMMENT'], /^#!(?:.*)/],
+         //
+         // A line comment that starts with ;
+         [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';'],
+         //
+         // A double quoted single line string
+         [PR['PR_STRING'],      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
+         //
          [PR['PR_KEYWORD'],     /^(?:func|print|foreach)\b/, null],
+         //
          [PR['PR_LITERAL'],
           /^[+\-]?(?:[0#]x[0-9a-f]+|\d+\/\d+|(?:\.\d+|\d+(?:\.\d*)?)(?:[ed][+\-]?\d+)?)/i],
          // A single quote possibly followed by a word that optionally ends with
