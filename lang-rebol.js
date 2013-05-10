@@ -12,7 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/* Original Google (Apache) license as-is above */
+/* 
+ *  Original Google (Apache) license as-is above 
+ *  All addition work comes under this (Apache 2 license)
+*/
 
 /**
  * @fileoverview
@@ -34,13 +37,10 @@
  */
 
 /**
- * History
- * -  0.0.1   8-May-2013    BW  big bang!
- * -  0.0.2   9-May-2013    BW  Slight restructure + multline strings improvement
- * -  0.0.3   9-May-2013    BW  :get-word, set-word:, 'word-literal and some types added
+ * History - https://github.com/draegtun/PrettifyRebol/Changes
  *
  * Contributors
- * - BW     Barry Walsh (draegtun)
+ * - draegtun (Barry Walsh)
  * 
  * Grammar - http://reb4.me/r/rebol#Value
  *
@@ -58,9 +58,6 @@ PR['registerLangHandler'](
          // Whitespace
          [PR['PR_PLAIN'],       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
          //
-         // Constant - doesn't blow up here (see later).  But is it working (depends on CSS?)
-         [PR['PR_CONSTANT'],    /^(?:none|true|false|yes|no|on|off)/, null, ''],
-         //
          // Multi-line string {braces} - allowed within:  { ^{ ^}  
          [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}']
         ],
@@ -73,9 +70,6 @@ PR['registerLangHandler'](
          //
          // A double quoted single line string (NB. below allows multiline even though Rebol doesn't)
          [PR['PR_STRING'],      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
-         //
-         // Constants - below blows up when constant is found in markup :(
-         //[PR['PR_CONSTANT'], /^\b(?:none|true|false|yes|no|on|off)\b/, null],
          //
          [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all)\b/, null],
          //
@@ -98,10 +92,10 @@ PR['registerLangHandler'](
          // set-word "literals"
          [PR['PR_DECLARATION'],  /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
          //
-         // Some left over stuff from lisp
+         // Some left over stuff from lang-lisp
          //
          // A word that optionally ends with = ! or ?.
-         //[PR['PR_PLAIN'], /^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
+         [PR['PR_PLAIN'], /^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
          //
          // A printable non-space non-special character
          [PR['PR_PUNCTUATION'], /^[^\w\t\n\r \xA0()\"\\\';]+/]

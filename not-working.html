@@ -17,17 +17,17 @@
     </head>
     <body>
         <h1>Rebol</h1>
+        <h2>Features not working in lang-rebol.js</h2>
 
+        <h3>Rebol (seems) to allow {} within multline strings</h3>
         <pre class="prettyprint lang-rebol">
 ; this is a comment
 multline-str: {
   start
   Opening { is fine.   Also ^{  and ^}
-  But closing } is a no-no :(
+  But closing } even though balanced does not highlight correctly :(
   end
 }
-
-constants: [none true false on off yes no] ; blows up when PR_CONSTANTS added?
 
 ; this should highlight correctly!
 print "hello world"

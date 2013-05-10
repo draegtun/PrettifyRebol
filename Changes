@@ -1,0 +1,10 @@
+Revision history for PrettifyRebol
+
+0.0.1   8-May-2013    
+        - big bang! (draegtun)
+
+0.0.2   9-May-2013    
+        - Slight restructure + multline string improvement (draegtun)
+        - :get-word, set-word:, 'word-literal & shebang! (draegtun)
+        - types pair! and (partial) date! added (draegtun)
+
