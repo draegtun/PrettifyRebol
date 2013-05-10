@@ -83,13 +83,13 @@ PR['registerLangHandler'](
          // -- Generic literal (from lisp)
          [PR['PR_LITERAL'],
           /^[+\-]?(?:[0#]x[0-9a-f]+|\d+\/\d+|(?:\.\d+|\d+(?:\.\d*)?)(?:[ed][+\-]?\d+)?)/i],
-         // -- A single quote word
+         // -- lit-word!
          [PR['PR_LITERAL'], /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
          //
-         // get-word "literals"
+         // -- get-word!
          [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/],
          //
-         // set-word "literals"
+         // -- set-word!
          [PR['PR_DECLARATION'],  /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
          //
          // Some left over stuff from lang-lisp

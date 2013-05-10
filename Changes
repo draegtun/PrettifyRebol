@@ -8,3 +8,6 @@ Revision history for PrettifyRebol
         - :get-word, set-word:, 'word-literal & shebang! (draegtun)
         - types pair! and (partial) date! added (draegtun)
 
+0.0.3   10-May-2013
+        - Created build directory for "automation"
+        - test html files are now built with Rebol script - create-test-html-files.r

@@ -1,23 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="https://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
-        <script type="text/javascript" src="lang-rebol.js"></script>
-
-        <script type="text/javascript">
-        jQuery(document).ready(function () {
-            // apply syntax highlighting
-            prettyPrint();
-        });
-        </script>
-
-    </head>
-    <body>
-        <h1>Rebol</h1>
-
-        <pre class="prettyprint lang-rebol">
 #!/usr/bin/env rebol -qs
 
 Rebol []
@@ -51,6 +31,3 @@ comment {
   instead of multiline string
 }
 print ["the" "end"]
-        </pre>
-    </body>
-</html>
