@@ -1,15 +1,13 @@
 
-* CDN test html
-
-* Constants as literals
+* CDN LIVE test html
 
 * Finish date! type
 
-* List of all types (build)
+* List of all types (build) [Made a start on this in build dir]
 
 * List of keywords (build)
 
-* Do functions? as part of keywords or separate syntax?
+* Do functions? (eg. length? type?)  as part of keywords or separate syntax?
 
 * Also what about make types! (like object! block!)
 
@@ -21,4 +19,6 @@
 
 * Build - both for r2 & r3 - then combine
 
-* comment {}   
+* comment {} as a comment?
+
+* Create patch of GCP test_prettify.js (and test2_*)

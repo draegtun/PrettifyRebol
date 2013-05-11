@@ -71,7 +71,7 @@ PR['registerLangHandler'](
          // A double quoted single line string (NB. below allows multiline even though Rebol doesn't)
          [PR['PR_STRING'],      /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
          //
-         [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all)\b/, null],
+         [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
          //
          // Types
          // -- pair!
@@ -88,6 +88,9 @@ PR['registerLangHandler'](
          //
          // -- get-word!
          [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/],
+         //
+         // -- Constants (as literals! - there is no Constants token in GCP)
+         [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
          //
          // -- set-word!
          [PR['PR_DECLARATION'],  /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
