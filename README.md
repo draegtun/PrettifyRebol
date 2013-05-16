@@ -30,8 +30,6 @@ Story so far:
 - So at moment just fudging my way around lang-lisp.js & other GCP syntax file
   (No docs... so lots of groping around in dark!)
 
-- Constants need testing
-
 - See not-working.html for stuff that doesn't work
 
 
