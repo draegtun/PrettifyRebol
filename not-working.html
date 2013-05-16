@@ -17,11 +17,12 @@
     </head>
     <body>
         <h1>Rebol</h1>
-        <h2>Features not working in lang-rebol.js</h2>
+        <h2>Highlighting not working in lang-rebol.js (using sunburst CSS)</h2>
 
-        <h3>Rebol (seems) to allow {} within multline strings</h3>
         <pre class="prettyprint lang-rebol">
-; this is a comment
+Rebol []
+
+; below works in rebol! (r2 & r3)
 multline-str: {
   start
   Opening { is fine.   Also ^{  and ^}
@@ -29,7 +30,7 @@ multline-str: {
   end
 }
 
-; this should highlight correctly!
+; below should highlight correctly! (just a highlighting placeholder!)
 print "hello world"
         </pre>
     </body>

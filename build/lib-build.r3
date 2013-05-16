@@ -15,6 +15,7 @@ template: read/string %template.html
 ; html snippets
 default-snippets: compose [
     'example-code   (read-snippet %example-code.rebol)
+    'genre          "Default Google Code Prettify CSS"
     'css            (read-snippet %snippets/GCP-svn-css.html) 
     'pre-code       <pre class="prettyprint lang-rebol">
     'post-code      </pre>
