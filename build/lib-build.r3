@@ -14,8 +14,8 @@ template: read/string %template.html
 
 ; html snippets
 default-snippets: compose [
-    'example-code   (read-snippet %example-code.r)
-    'css            (read-snippet %GCP-svn-css.html) 
+    'example-code   (read-snippet %example-code.rebol)
+    'css            (read-snippet %snippets/GCP-svn-css.html) 
     'pre-code       <pre class="prettyprint lang-rebol">
     'post-code      </pre>
 ]
