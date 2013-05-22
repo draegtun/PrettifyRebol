@@ -69,20 +69,7 @@ PR['registerLangHandler'](
          [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';'],
          //
          [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
-         //
-         // Types
-         // -- get-word!
-         [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/],
-         // -- lit-word!
-         [PR['PR_LITERAL'], /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
-         // -- set-word!
-         [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
-         // -- date!
-         [PR['PR_TYPE'], /^\d{1,2}-\w{3,9}-\d{2,4}/],
-         // -- pair!
-         [PR['PR_TYPE'], /^[0-9]*x[0-9]*/],
-         // -- string!
-         [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
+!!!types!!!
          //
          // Literals
          // -- Generic literal (from lisp)
