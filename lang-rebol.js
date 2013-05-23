@@ -68,27 +68,31 @@ PR['registerLangHandler'](
          //
          // Types
          // -- time!
-         [PR['PR_TYPE'], /^\d{1,2}\:\d{1,2}\:\d{1,2}\b/],
-         [PR['PR_TYPE'], /^\d{1,2}\:\d{1,2}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\:\d{1,2}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\b/],
          // -- date!
-         [PR['PR_TYPE'], /^\d{1,2}-\w{3,9}-\d{2,4}\b/],
-         [PR['PR_TYPE'], /^\d{1,2}-\d{1,2}-\d{2,4}\b/],
-         [PR['PR_TYPE'], /^\d{1,2}\/\w{3,9}\/\d{2,4}\b/],
-         [PR['PR_TYPE'], /^\d{1,2}\/\d{1,2}\/\d{2,4}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}-\w{3,9}-\d{2,4}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}-\d{1,2}-\d{2,4}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}\/\w{3,9}\/\d{2,4}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}\/\d{1,2}\/\d{2,4}\b/],
          // -- pair!
-         [PR['PR_TYPE'], /^\d+x\d+\b/],
+         [PR['PR_LITERAL'], /^\d+x\d+\b/],
          // -- string!
          [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
          // -- decimal!
-         [PR['PR_TYPE'], /^\d+(?:\.\d+)\b/],
+         [PR['PR_LITERAL'], /^\d+(?:\.\d+)\b/],
          // -- integer!
-         [PR['PR_TYPE'], /^\d+\b/],
+         [PR['PR_LITERAL'], /^\d+\b/],
          // -- get-word!
          [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/],
          // -- lit-word!
          [PR['PR_LITERAL'], /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
          // -- set-word!
          [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
+         //
+         // Above is the Rebol data types grammar.  
+         // Below the grammar for type! (declarations)
+         [PR['PR_TYPE'],  /^(?:[A-Za-z0-9=\-\?\_\*\+\.\/]*)\!/],
          //
          // Constants (as literals! - there is no Constants token in GCP)
          [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],

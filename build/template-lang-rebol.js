@@ -67,6 +67,10 @@ PR['registerLangHandler'](
          [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
 !!!types!!!
          //
+         // Above is the Rebol data types grammar.  
+         // Below the grammar for type! (declarations)
+         [PR['PR_TYPE'],  /^(?:[A-Za-z0-9=\-\?\_\*\+\.\/]*)\!/],
+         //
          // Constants (as literals! - there is no Constants token in GCP)
          [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
          //

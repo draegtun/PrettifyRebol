@@ -4,11 +4,11 @@
     symbol!         yes    ;think also covered by Generic
     none!           none
     money!          none
-    time!           [PR_TYPE
+    time!           [PR_LITERAL
                         "/^^\d{1,2}\:\d{1,2}\:\d{1,2}\b/"       ; hh:mm
                         "/^^\d{1,2}\:\d{1,2}\b/"               ; hh:mm
                     ]
-    date!           [PR_TYPE 
+    date!           [PR_LITERAL 
                         "/^^\d{1,2}-\w{3,9}-\d{2,4}\b/"     ; dd-MONTH-yyyy (naive regex)
                         "/^^\d{1,2}-\d{1,2}-\d{2,4}\b/"     ; dd-mm-yyyy (naive regex)
                         "/^^\d{1,2}\/\w{3,9}\/\d{2,4}\b/"   ; dd/MONTH/yyyy (naive regex)
@@ -16,7 +16,7 @@
                         ; TODO date/ (time) datezone
                     ]
     char!           none
-    pair!           [PR_TYPE "/^^\d+x\d+\b/"]
+    pair!           [PR_LITERAL "/^^\d+x\d+\b/"]
     event!          none
     tuple!          none
     bitset!         none
@@ -31,8 +31,8 @@
 
     ; at end to avoid any conflicts with other number types (eg. date!)
     number!         yes    ; see integer! decimal! percent! (?)
-    decimal!        [PR_TYPE "/^^\d+(?:\.\d+)\b/"]
-    integer!        [PR_TYPE "/^^\d+\b/"]
+    decimal!        [PR_LITERAL "/^^\d+(?:\.\d+)\b/"]
+    integer!        [PR_LITERAL "/^^\d+\b/"]
 
     ; also best last to avoid conflicts (in particular time!)
     get-word!       [PR_LITERAL "/^^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/" ]
