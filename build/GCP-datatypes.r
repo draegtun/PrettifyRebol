@@ -1,20 +1,22 @@
 [
     'Generic        {this is covered by Generic "lisp" syntax rule}
     port!           none
-    number!         yes    ;see Generic
     symbol!         yes    ;think also covered by Generic
-    get-word!       [PR_LITERAL "/^^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/" ]
-    lit-word!       [PR_LITERAL "/^^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/"]
-    ; set-word! must come after get-word! & lit-word!
-    set-word!       [PR_DECLARATION "/^^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/" ]
     none!           none
-    integer!        yes    ;see Generic
-    decimal!        yes    ;see Generic
     money!          none
-    time!           none
-    date!           [PR_TYPE "/^^\d{1,2}-\w{3,9}-\d{2,4}/" ] ;; Simple 2-Jan-2013 regex for now
+    time!           [PR_TYPE
+                        "/^^\d{1,2}\:\d{1,2}\:\d{1,2}\b/"       ; hh:mm
+                        "/^^\d{1,2}\:\d{1,2}\b/"               ; hh:mm
+                    ]
+    date!           [PR_TYPE 
+                        "/^^\d{1,2}-\w{3,9}-\d{2,4}\b/"     ; dd-MONTH-yyyy (naive regex)
+                        "/^^\d{1,2}-\d{1,2}-\d{2,4}\b/"     ; dd-mm-yyyy (naive regex)
+                        "/^^\d{1,2}\/\w{3,9}\/\d{2,4}\b/"   ; dd/MONTH/yyyy (naive regex)
+                        "/^^\d{1,2}\/\d{1,2}\/\d{2,4}\b/"   ; dd/mm/yyyy (naive regex)
+                        ; TODO date/ (time) datezone
+                    ]
     char!           none
-    pair!           [PR_TYPE "/^^[0-9]*x[0-9]*/"]
+    pair!           [PR_TYPE "/^^\d+x\d+\b/"]
     event!          none
     tuple!          none
     bitset!         none
@@ -26,6 +28,17 @@
     url!            none
     tag!            none
     image!          none
+
+    ; at end to avoid any conflicts with other number types (eg. date!)
+    number!         yes    ; see integer! decimal! percent! (?)
+    decimal!        [PR_TYPE "/^^\d+(?:\.\d+)\b/"]
+    integer!        [PR_TYPE "/^^\d+\b/"]
+
+    ; also best last to avoid conflicts (in particular time!)
+    get-word!       [PR_LITERAL "/^^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/" ]
+    lit-word!       [PR_LITERAL "/^^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/"]
+    ; set-word! must come after get-word! & lit-word!
+    set-word!       [PR_DECLARATION "/^^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/" ]
 ]
 
 

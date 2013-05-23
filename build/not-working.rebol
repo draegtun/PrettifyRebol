@@ -8,5 +8,9 @@ multline-str: {
   end
 }
 
+; whats the matter with x?
+foo: func [x] [x + x]
+bar: func [a] [a + a]
+
 ; below should highlight correctly! (just a highlighting placeholder!)
 print "hello world"

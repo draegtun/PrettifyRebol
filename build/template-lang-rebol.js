@@ -62,29 +62,18 @@ PR['registerLangHandler'](
          [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}']
         ],
         [
+         //
+         // Keywords
+         [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
+!!!types!!!
+         //
+         // Constants (as literals! - there is no Constants token in GCP)
+         [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
+         //
          // Script tag (shebang!)
          [PR['PR_COMMENT'], /^#!(?:.*)/],
          //
          // A line comment that starts with ;
-         [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';'],
-         //
-         [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
-!!!types!!!
-         //
-         // Literals
-         // -- Generic literal (from lisp)
-         [PR['PR_LITERAL'],
-          /^[+\-]?(?:[0#]x[0-9a-f]+|\d+\/\d+|(?:\.\d+|\d+(?:\.\d*)?)(?:[ed][+\-]?\d+)?)/i],
-         //
-         // -- Constants (as literals! - there is no Constants token in GCP)
-         [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
-         //
-         // Some left over stuff from lang-lisp
-         //
-         // A word that optionally ends with = ! or ?.
-         [PR['PR_PLAIN'], /^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
-         //
-         // A printable non-space non-special character
-         [PR['PR_PUNCTUATION'], /^[^\w\t\n\r \xA0()\"\\\';]+/]
+         [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';']
         ]),
     ['rebol']);

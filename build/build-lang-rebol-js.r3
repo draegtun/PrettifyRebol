@@ -26,10 +26,11 @@ make-types-string: has [types buf] [
 
         ; GCP grammar line
         context [
-            name:  to-string action/1
-            regex: to-string action/2
-
-            buf/push gcp-grammar-string name regex
+            name:  to-string take action  ; GCP rule name
+            ; can have multi regex for each rule
+            foreach regex action [
+                buf/push gcp-grammar-string name to-string regex
+            ]
         ]
     ]
 
@@ -37,11 +38,7 @@ make-types-string: has [types buf] [
 ]
 
 
-;         // -- pair!
-;         [PR['PR_TYPE'], /^[0-9]*x[0-9]*/],
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; build lang-rebol.js 
 
 js: make-fulfil %template-lang-rebol.js [
@@ -49,6 +46,4 @@ js: make-fulfil %template-lang-rebol.js [
 ]
 
 write %lang-rebol.js js/fulfil []
-
-;         [PR['PR_TYPE'], /^\d{1,2}-\w{3,9}-\d{2,4}/ ],  // Simple 2-Jan-2013 regex for now
 

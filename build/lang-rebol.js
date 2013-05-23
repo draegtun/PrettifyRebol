@@ -62,42 +62,41 @@ PR['registerLangHandler'](
          [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}']
         ],
         [
-         // Script tag (shebang!)
-         [PR['PR_COMMENT'], /^#!(?:.*)/],
          //
-         // A line comment that starts with ;
-         [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';'],
-         //
+         // Keywords
          [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
          //
          // Types
+         // -- time!
+         [PR['PR_TYPE'], /^\d{1,2}\:\d{1,2}\:\d{1,2}\b/],
+         [PR['PR_TYPE'], /^\d{1,2}\:\d{1,2}\b/],
+         // -- date!
+         [PR['PR_TYPE'], /^\d{1,2}-\w{3,9}-\d{2,4}\b/],
+         [PR['PR_TYPE'], /^\d{1,2}-\d{1,2}-\d{2,4}\b/],
+         [PR['PR_TYPE'], /^\d{1,2}\/\w{3,9}\/\d{2,4}\b/],
+         [PR['PR_TYPE'], /^\d{1,2}\/\d{1,2}\/\d{2,4}\b/],
+         // -- pair!
+         [PR['PR_TYPE'], /^\d+x\d+\b/],
+         // -- string!
+         [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
+         // -- decimal!
+         [PR['PR_TYPE'], /^\d+(?:\.\d+)\b/],
+         // -- integer!
+         [PR['PR_TYPE'], /^\d+\b/],
          // -- get-word!
          [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/],
          // -- lit-word!
          [PR['PR_LITERAL'], /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
          // -- set-word!
          [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
-         // -- date!
-         [PR['PR_TYPE'], /^\d{1,2}-\w{3,9}-\d{2,4}/],
-         // -- pair!
-         [PR['PR_TYPE'], /^[0-9]*x[0-9]*/],
-         // -- string!
-         [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
          //
-         // Literals
-         // -- Generic literal (from lisp)
-         [PR['PR_LITERAL'],
-          /^[+\-]?(?:[0#]x[0-9a-f]+|\d+\/\d+|(?:\.\d+|\d+(?:\.\d*)?)(?:[ed][+\-]?\d+)?)/i],
-         //
-         // -- Constants (as literals! - there is no Constants token in GCP)
+         // Constants (as literals! - there is no Constants token in GCP)
          [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
          //
-         // Some left over stuff from lang-lisp
+         // Script tag (shebang!)
+         [PR['PR_COMMENT'], /^#!(?:.*)/],
          //
-         // A word that optionally ends with = ! or ?.
-         [PR['PR_PLAIN'], /^-*(?:[a-z_]|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?/i],
-         //
-         // A printable non-space non-special character
-         [PR['PR_PUNCTUATION'], /^[^\w\t\n\r \xA0()\"\\\';]+/]
+         // A line comment that starts with ;
+         [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';']
         ]),
     ['rebol']);

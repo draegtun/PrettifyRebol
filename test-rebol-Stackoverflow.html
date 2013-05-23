@@ -35,7 +35,8 @@ long-str: {
   line 3 - 'one ^() #"X" blah blah
 }
 print length? long-str  ; end of line comment
-series: compose [1 0.1 "one" 'one :foo 25-Dec-2012 10x90 (1 + 1) (foo 10)]
+the-end: [duff 25-Dec-2012 1-1-12 2/2/2002 31-December-1999 00:00:00 23:59 duff]
+series: compose [1 0.1 "one" 'one :foo 10x90 (1 + 1) (foo 10)]
 foreach a series [print a]
 bar: make object! [a: 1]
 block/1: 10
@@ -45,7 +46,7 @@ comment {
   treat this as multiline comment?
   instead of multiline string?? 
 }
-print ["the" "end"]
+print reduce the-end
         </code></pre></div></div>
     </body>
 </html>
