@@ -81,14 +81,16 @@ PR['registerLangHandler'](
          [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
          // -- decimal!
          [PR['PR_LITERAL'], /^\d+(?:\.\d+)\b/],
+         // -- percent!
+         [PR['PR_LITERAL'], /^(?:[0-9]+)\%/],
          // -- integer!
          [PR['PR_LITERAL'], /^\d+\b/],
          // -- get-word!
-         [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/],
+         [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*)/],
          // -- lit-word!
-         [PR['PR_LITERAL'], /^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/],
+         [PR['PR_LITERAL'], /^\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*)/],
          // -- set-word!
-         [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/],
+         [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*):/],
          //
          // Above is the Rebol data types grammar.  
          // Below the grammar for type! (declarations)
@@ -103,4 +105,4 @@ PR['registerLangHandler'](
          // A line comment that starts with ;
          [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';']
         ]),
-    ['rebol']);
+    ['rebol', 'red']);

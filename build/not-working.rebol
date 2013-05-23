@@ -8,6 +8,8 @@ multline-str: {
   end
 }
 
+literal: [the'end]
+
 ; whats the matter with x?
 foo: func [x] [x + x]
 bar: func [a] [a + a]

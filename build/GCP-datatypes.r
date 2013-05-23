@@ -32,13 +32,15 @@
     ; at end to avoid any conflicts with other number types (eg. date!)
     number!         yes    ; see integer! decimal! percent! (?)
     decimal!        [PR_LITERAL "/^^\d+(?:\.\d+)\b/"]
+    percent!        [PR_LITERAL "/^^(?:[0-9]+)\%/"]
     integer!        [PR_LITERAL "/^^\d+\b/"]
 
     ; also best last to avoid conflicts (in particular time!)
-    get-word!       [PR_LITERAL "/^^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*)/" ]
-    lit-word!       [PR_LITERAL "/^^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/"]
+    get-word!       [PR_LITERAL "/^^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*)/" ]
+    lit-word!       [PR_LITERAL "/^^\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*)/" ]
+    ;lit-word!       [PR_LITERAL "/^^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/"]
     ; set-word! must come after get-word! & lit-word!
-    set-word!       [PR_DECLARATION "/^^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/]*):/" ]
+    set-word!       [PR_DECLARATION "/^^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*):/" ]
 ]
 
 

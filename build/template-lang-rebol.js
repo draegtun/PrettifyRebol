@@ -80,4 +80,4 @@ PR['registerLangHandler'](
          // A line comment that starts with ;
          [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';']
         ]),
-    ['rebol']);
+    ['rebol', 'red']);
