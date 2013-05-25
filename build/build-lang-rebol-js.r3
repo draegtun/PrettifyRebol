@@ -16,12 +16,13 @@ make-types-string: has [types buf] [
     buf/push "//"
     buf/push "// Types"
 
-    types: load %GCP-datatypes.r
+    ;types: load %GCP-datatypes.r
+    types-data: make object! load %GCP-datatypes.r
 
     ; only need grammar with declared actions (blocks)
-    remove-each [type action] types [not block? action]
+    remove-each [type action] types-data/types [not block? action]
 
-    foreach [type action] types [
+    foreach [type action] types-data/types [
         buf/push join "// -- " to-string type  ; comment
 
         ; GCP grammar line

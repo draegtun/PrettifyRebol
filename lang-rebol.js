@@ -71,10 +71,7 @@ PR['registerLangHandler'](
          [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\:\d{1,2}\b/],
          [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\b/],
          // -- date!
-         [PR['PR_LITERAL'], /^\d{1,2}-\w{3,9}-\d{2,4}\b/],
-         [PR['PR_LITERAL'], /^\d{1,2}-\d{1,2}-\d{2,4}\b/],
-         [PR['PR_LITERAL'], /^\d{1,2}\/\w{3,9}\/\d{2,4}\b/],
-         [PR['PR_LITERAL'], /^\d{1,2}\/\d{1,2}\/\d{2,4}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}\b/],
          // -- pair!
          [PR['PR_LITERAL'], /^\d+x\d+\b/],
          // -- string!
