@@ -78,7 +78,7 @@ PR['registerLangHandler'](
          // -- char!
          [PR['PR_LITERAL'], /^\#\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/],
          // -- pair!
-         [PR['PR_LITERAL'], /^\d+x\d+\b/],
+         [PR['PR_LITERAL'], /^\d(?:[\.\,\'\d]*)x\d(?:[\.\,\'\d]*)\b/],
          // -- string!
          [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/],
          // -- issue!

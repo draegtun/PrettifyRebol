@@ -23,7 +23,7 @@ types: compose/deep [
                         ; TODO date/ (time) datezone - eg: 24-May-2013/16:41:52+1:00
                     ]
     char!           [PR_LITERAL (re join "\#" string-re)]
-    pair!           [PR_LITERAL (re "\d+x\d+\b")]
+    pair!           [PR_LITERAL (re "\d(?:[\.\,\'\d]*)x\d(?:[\.\,\'\d]*)\b")]
     event!          none
     bitset!         none
     string!         [PR_STRING (re string-re)]
