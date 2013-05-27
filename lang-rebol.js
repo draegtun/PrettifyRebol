@@ -67,21 +67,35 @@ PR['registerLangHandler'](
          [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
          //
          // Types
+         // -- money!
+         [PR['PR_LITERAL'], /^\$\d[\d\.\,\']*\b/],
+         [PR['PR_LITERAL'], /^[\+\-\w]{1,4}\$\d[\d\.\,\']*\b/],
          // -- time!
          [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\:\d{1,2}\b/],
          [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\b/],
          // -- date!
          [PR['PR_LITERAL'], /^\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}\b/],
+         // -- char!
+         [PR['PR_LITERAL'], /^\#\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/],
          // -- pair!
          [PR['PR_LITERAL'], /^\d+x\d+\b/],
          // -- string!
-         [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/, null, '"'],
+         [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/],
+         // -- issue!
+         [PR['PR_LITERAL'], /^\#[\w\d\-]+/],
+         // -- binary!
+         [PR['PR_LITERAL'], /^\#\{(?:[^\}\\]|\\[\s\S])*(?:\}|$)/],
+         // -- file!
+         [PR['PR_LITERAL'], /^\%[\.\w\/\-\\]+/],
+         // -- tuple!
+         [PR['PR_LITERAL'], /^\d+\.\d+\.\d+\.\d+/],
+         [PR['PR_LITERAL'], /^\d+\.\d+\.\d+/],
          // -- decimal!
-         [PR['PR_LITERAL'], /^\d+(?:\.\d+)\b/],
+         [PR['PR_LITERAL'], /^(\+|\-|\d)\d*(?:[\.\,]\d+)\b/],
          // -- percent!
-         [PR['PR_LITERAL'], /^(?:[0-9]+)\%/],
+         [PR['PR_LITERAL'], /^(\+|\-|\d)(?:[\.\,\'\d]*)\%/],
          // -- integer!
-         [PR['PR_LITERAL'], /^\d+\b/],
+         [PR['PR_LITERAL'], /^(\+|\-|\d)\d*\b/],
          // -- get-word!
          [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*)/],
          // -- lit-word!
