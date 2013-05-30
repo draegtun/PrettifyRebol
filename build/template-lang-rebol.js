@@ -59,7 +59,7 @@ PR['registerLangHandler'](
          [PR['PR_PLAIN'],       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
          //
          // Multi-line string {braces} - allowed within:  { ^{ ^}  
-         [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}']
+         [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}'],
         ],
         [
          //
@@ -74,6 +74,9 @@ PR['registerLangHandler'](
          // Constants (as literals! - there is no Constants token in GCP)
          [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
 !!!keywords!!!
+         //
+         // Multi-line comment
+         [PR['PR_COMMENT'],      /^comment\s*\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/],
          //
          // Script tag (shebang!)
          [PR['PR_COMMENT'], /^#!(?:.*)/],

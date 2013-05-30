@@ -20,7 +20,11 @@ alpha: charset [#"a" - #"z" #"A" - #"Z"]
 remove-each n keywords [not parse to-string pick to-string n 1 [alpha]]  ;not parse n/1 alpha]
 
 ; any other funnies (to be tested) - eg. and~ or~
+; NB. Left along at moment.  However we know words~ don't work in GCP
 
+; remove words we don't want
+; NB. remove COMMENT because we have a GCP rule for this
+remove/part find keywords 'comment 1
 
 ; sort on longest (token) first
 sort/compare keywords func [a b] [(length? to-string a) > (length? to-string b)]

@@ -47,8 +47,7 @@ bar: make object! [a: 1]
 block/1: 10
 replace/all block 'b 'B
 comment {
-  treat this as multiline comment?
-  instead of multiline string?? 
+  multiline comment
 }
 print: func [x] [print x] ; check to see if any keyword side-effect with print here
 foreach a series [print a] print reduce the-end
