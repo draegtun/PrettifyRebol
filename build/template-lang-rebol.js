@@ -63,8 +63,8 @@ PR['registerLangHandler'](
         ],
         [
          //
-         // Keywords
-         [PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
+         // Schemes ("Generic" RE) - Must be before get-word! to avoid conflict
+         [PR['PR_LITERAL'], /^\w+\:\/\/[\w\d\+\-\.\,\%\/]+\b/],
 !!!types!!!
          //
          // Above is the Rebol data types grammar.  
@@ -73,6 +73,7 @@ PR['registerLangHandler'](
          //
          // Constants (as literals! - there is no Constants token in GCP)
          [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
+!!!keywords!!!
          //
          // Script tag (shebang!)
          [PR['PR_COMMENT'], /^#!(?:.*)/],

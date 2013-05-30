@@ -5,6 +5,7 @@ date-re: "\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}"  ; naive date! regex
 
 string-re: {\"(?:[^^\"\\]|\\[\s\S])*(?:\"|$)}
 brace-re:  "\{(?:[^^\}\\]|\\[\s\S])*(?:\}|$)"   ; TODO - could build this from string-re
+tag-re:    "\<(?:[^^\>\\]|\\[\s\S])*(?:\>|$)"   ; TODO - could build this from string-re
 
 types: compose/deep [
     port!           none
@@ -36,9 +37,10 @@ types: compose/deep [
                         (re "\%[\.\w\/\-\\]+")  ; simple re %word (expected 1st letter of word)
                         ; TODO must try UNICODE/utf-8 filenames
                     ]
-    email!          none
-    url!            none
-    tag!            none
+    email!          [PR_LITERAL (re "[\w\d\+\-\.]+\@[\w\d\+\-\.]+\b")]  ; naive email re
+    url!            none ; covered by generic scheme RE instead of below
+                         ; [PR_LITERAL (re "http\:\/\/[\w\d\+\-\.\,\%\/]+\b")]
+    tag!            [PR_LITERAL (re tag-re)]
     image!          none
 
     ; at end to avoid any conflicts with other number types (eg. date!)
@@ -53,11 +55,10 @@ types: compose/deep [
     integer!        [PR_LITERAL (re "(\+|\-|\d)\d*\b")]
 
     ; also best last to avoid conflicts (in particular time!)
-    get-word!       [PR_LITERAL (re "\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*)") ]
-    lit-word!       [PR_LITERAL (re "\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*)") ]
-    ;lit-word!       [PR_LITERAL "/^^\'(?:-*(?:\w|\\[\x21-\x7e])(?:[\w-]*|\\[\x21-\x7e])[=!?]?)?/"]
+    get-word!       [PR_LITERAL (re "\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
+    lit-word!       [PR_LITERAL (re "\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
     ; set-word! must come after get-word! & lit-word!
-    set-word!       [PR_DECLARATION (re "(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\']*):") ]
+    set-word!       [PR_DECLARATION (re "(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*):") ]
 ]
 
 

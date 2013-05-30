@@ -50,3 +50,18 @@ make-string-buffer: does [
         ]
     ]
 ]
+
+; simple re escaper!
+context [
+    alpha-num: charset [#"a" - #"z" #"A" - #"Z" #"0" - #"9"]
+
+    set 're-escape-non-alphanum func [string /local new-string] [
+        new-string: copy ""
+        foreach char string [
+            either parse/all to-string char [alpha-num] [append new-string char]
+            [append new-string reduce ["\" char]]
+        ]
+        new-string
+    ]
+]
+

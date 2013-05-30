@@ -38,12 +38,41 @@ make-types-string: has [types buf] [
     buf/get
 ]
 
+make-keywords-string: has [keywords buf string] [
+    buf: make-string-buffer
+    buf/indent-with: "         "
+    buf/push "//"
+    buf/push "// Keywords"
+
+    ; keywords provided are just funcs + ops (no types!)
+    ; Just rebol3 and includes all refinements and excludes all functions? (ending with ?)
+    string: copy ""
+    keywords: load %GCP-keywords.r
+
+    ; remove all non-escaped words??
+    ;remove-each n keywords [not-equal? to-string n re-escape-non-alphanum to-string n]
+
+    foreach kw keywords [append string join re-escape-non-alphanum to-string kw "|"]
+
+    ;buf/push gcp-grammar-string "PR_KEYWORD" "/^^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null"
+    remove back tail string  ; remove trailing |
+    buf/push gcp-grammar-string "PR_KEYWORD" rejoin ["/^^(?:" string ")\b/, null"]
+
+    ;// Keywords
+    ;[PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
+
+    buf/get
+]
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; build lang-rebol.js 
 
 js: make-fulfil %template-lang-rebol.js [
     'types      (make-types-string)
+    'keywords   (make-keywords-string)
 ]
 
 write %lang-rebol.js js/fulfil []
