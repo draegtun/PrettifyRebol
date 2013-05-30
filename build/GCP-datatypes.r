@@ -21,7 +21,9 @@ types: compose/deep [
                     ]
     date!           [PR_LITERAL 
                         (re join date-re "\b")
-                        ; TODO date/ (time) datezone - eg: 24-May-2013/16:41:52+1:00
+                        ;
+                        ; date/ (time) datezone - eg: 24-May-2013/16:41:52+1:00
+                        ; already covered by path! datatype :)
                     ]
     char!           [PR_LITERAL (re join "\#" string-re)]
     pair!           [PR_LITERAL (re "\d(?:[\.\,\'\d]*)x\d(?:[\.\,\'\d]*)\b")]

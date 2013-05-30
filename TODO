@@ -1,24 +1,11 @@
+* test-html of ALL keywords
+
+* update github.io (issues with rebase again?)
+
+* Update ReadME - trim down... mention not to amend files (use build)... point to other docs... github.io page... and plan of actions (for SO)
 
 * CDN LIVE test html
 
-* Finish date! type
-
-* List of all types (build) [Made a start on this in build dir]
-
-* List of keywords (build)
-
-* Do functions? (eg. length? type?)  as part of keywords or separate syntax?
-
-* Also what about make types! (like object! block!)
-
-* Extract code + build template (build)
-
-* Create GCP syntax for types
-
-* Create keyword list for GCP (build)
-
-* Build - both for r2 & r3 - then combine
-
-* comment {} as a comment?
-
 * Create patch of GCP test_prettify.js (and test2_*)
+
+* Tidy up build shell scripts & docs
