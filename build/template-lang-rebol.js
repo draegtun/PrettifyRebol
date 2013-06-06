@@ -15,6 +15,7 @@
 /* 
  *  Original Google (Apache) license as-is above 
  *  All addition work comes under this (Apache 2 license)
+ *  - Copyright (C) 2013- (see contributors)
 */
 
 /**
@@ -69,7 +70,7 @@ PR['registerLangHandler'](
          //
          // Above is the Rebol data types grammar.  
          // Below the grammar for type! (declarations)
-         [PR['PR_TYPE'],  /^(?:[A-Za-z0-9=\-\?\_\*\+\.\/]*)\!/],
+         [PR['PR_TYPE'],  /^(?:[A-Za-z0-9=\-\?\_\*\+\.\/]+)\!/],
 !!!keywords!!!
          //
          // functions? (ie. ending in question mark)
