@@ -1,6 +1,6 @@
 Revision history for PrettifyRebol
 
-0.0.4   NEXT
+0.0.4   6-June-2013
         - Completely rebuilt grammar definitions from bottom up
         - Now all built from templates, for eg.
         - All types built from build/GCP-datatypes.r
@@ -18,5 +18,5 @@ Revision history for PrettifyRebol
         - types pair! and (partial) date! added
 
 0.0.1   8-May-2013    
-        - big bang! Taken lang-lisp.js and stared amended to Rebol
+        - big bang! Taken lang-lisp.js and amended to Rebol
         - All changes above are by Barry Walsh (draegtun) unless otherwise attributed.

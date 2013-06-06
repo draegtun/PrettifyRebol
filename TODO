@@ -1,11 +1,9 @@
 * update github.io (issues with rebase again?)
 
-* Update ReadME - trim down... mention not to amend files (use build)... 
-  ...point to other docs... github.io page... and plan of actions (for SO)
-  ...howto use GCP?  (or rather how I've used it)... mention CDN?
+* Update ReadME ...howto use GCP?  (or rather how I've used it)... mention CDN?
 
 * CDN LIVE test html
 
 * Create patch of GCP test_prettify.js (and test2_*)
 
-* Tidy up build shell scripts & docs
+* Improve build shell scripts & docs ?? (maybe?)
