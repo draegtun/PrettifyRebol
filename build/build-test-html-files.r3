@@ -36,3 +36,15 @@ write %not-working.html html/fulfil [
     'genre         "Highlighting not working in lang-rebol.js (using sunburst CSS)"
 ]
 
+write %all-keywords.html html/fulfil [
+    'genre          "All keywords (with refinements) found in Rebol3"
+    'example-code   (
+        has [kw code] [
+            kw: load %keywords.r3
+            code: copy ""
+            foreach k kw [append code join to-string k newline]
+            code
+        ]
+    )
+]
+

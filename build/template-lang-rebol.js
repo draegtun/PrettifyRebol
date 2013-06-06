@@ -70,10 +70,13 @@ PR['registerLangHandler'](
          // Above is the Rebol data types grammar.  
          // Below the grammar for type! (declarations)
          [PR['PR_TYPE'],  /^(?:[A-Za-z0-9=\-\?\_\*\+\.\/]*)\!/],
+!!!keywords!!!
+         //
+         // functions? (ie. ending in question mark)
+         [PR['PR_KEYWORD'], /\b\w(?:[A-Za-z0-9=\-\!\_\*\+\.\/\'\~]*)\?/],
          //
          // Constants (as literals! - there is no Constants token in GCP)
          [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
-!!!keywords!!!
          //
          // Multi-line comment
          [PR['PR_COMMENT'],      /^comment\s*\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/],

@@ -21,6 +21,19 @@ tuples: [333.333.333 444.444.444.444 555.555.555.555.555] ; only defined 3 & 4 t
 
 words-with~: xor~ 5 2   ; xor~ is defined in keyword grammar but GCP doesn't like it :(
 
+; some keyword issues
+
+print
+print["must be space after keyword to highlight it"]
+print ["this works fine"]
+
+; and will (nearly) always highlight word as keyword (often useful indicator!)
+print: func [replace] [print replace] ; this is all fine (by luck!)
+print: func [replace x] [print [replace x]]  ; this time "replace" is hi-lighted as keyword
+foo: does [print]
+; NB - Keywords will be highlighted as keyword when preceded by whitespace
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; not implemented but may do in future
 

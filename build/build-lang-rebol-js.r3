@@ -56,7 +56,7 @@ make-keywords-string: has [keywords buf string] [
 
     ;buf/push gcp-grammar-string "PR_KEYWORD" "/^^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null"
     remove back tail string  ; remove trailing |
-    buf/push gcp-grammar-string "PR_KEYWORD" rejoin ["/^^(?:" string ")\b/, null"]
+    buf/push gcp-grammar-string "PR_KEYWORD" rejoin ["/^^(?:" string ")\s/, null"]
 
     ;// Keywords
     ;[PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],

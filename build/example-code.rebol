@@ -28,4 +28,5 @@ comment {
   multiline comment
 }
 print: func [x] [print x] ; check to see if any keyword side-effect with print here
+replaceit: func [replace-foo-to] [print [replace-foo-to]]
 foreach a series [print a] print reduce the-end

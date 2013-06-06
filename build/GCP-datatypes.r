@@ -42,7 +42,7 @@ types: compose/deep [
     email!          [PR_LITERAL (re "[\w\d\+\-\.]+\@[\w\d\+\-\.]+\b")]  ; naive email re
     url!            none ; covered by generic scheme RE instead of below
                          ; [PR_LITERAL (re "http\:\/\/[\w\d\+\-\.\,\%\/]+\b")]
-    tag!            [PR_LITERAL (re tag-re)]
+    ;tag!            [PR_LITERAL (re tag-re)]
     image!          none
 
     ; at end to avoid any conflicts with other number types (eg. date!)

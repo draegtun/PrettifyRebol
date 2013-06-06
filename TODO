@@ -2,7 +2,9 @@
 
 * update github.io (issues with rebase again?)
 
-* Update ReadME - trim down... mention not to amend files (use build)... point to other docs... github.io page... and plan of actions (for SO)
+* Update ReadME - trim down... mention not to amend files (use build)... 
+  ...point to other docs... github.io page... and plan of actions (for SO)
+  ...howto use GCP?  (or rather how I've used it)... mention CDN?
 
 * CDN LIVE test html
 
