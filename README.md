@@ -1,4 +1,4 @@
-# Rebol syntax highlighting grammar for Google Code Prettifer
+# Rebol grammar for Google Code Prettifer
 
 ## History
 
@@ -8,7 +8,7 @@
 
 * All syntax grammar (in lang-rebol.js) built from Rebol scripts
 
-*NB. Important - Do not amend lang-rebol.js or any of the HTML files directly.  See build/ReadMe.txt on how to amend and rebuild these :)* 
+**NB. Important - Do not amend lang-rebol.js or any of the HTML files directly.  See build/ReadMe.txt on how to amend and rebuild these :)**
 
 
 ## Rules
