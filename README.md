@@ -19,6 +19,8 @@
 
 ## Rules
 
+* General rule... KISS :)
+
 * All datatypes! (defined in build/GCP-datatypes.r) marked as LITERAL (with some exceptions)
 
 * All keywords (Rebol functions - defined in build/GCP-keywords.r) marked as KEYWORD (with some exceptions)
