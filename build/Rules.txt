@@ -1,0 +1,83 @@
+GCP comes with the following grammar topics (pulled from Matlab grammar)
+
+    PR_PLAIN: plain text
+    PR_STRING: string literals
+    PR_KEYWORD: keywords
+    PR_COMMENT: comments
+    PR_TYPE: types
+    PR_LITERAL: literal values (1, null, true, ..)
+    PR_PUNCTUATION: punctuation string
+    PR_SOURCE: embedded source
+    PR_DECLARATION: markup declaration such as a DOCTYPE
+    PR_TAG: sgml tag
+    PR_ATTRIB_NAME: sgml attribute name
+    PR_ATTRIB_VALUE: sgml attribute value
+
+NB.  Not sure how correct/up-to-date these are?  
+     Also Matlab defines PR_CONSTANT & PR_IDENTIFIER.  
+
+Additionally this is what i grepped from prettify.js:
+
+  var PR_STRING = 'str';
+  var PR_KEYWORD = 'kwd';
+  var PR_COMMENT = 'com';
+  var PR_TYPE = 'typ';
+  var PR_LITERAL = 'lit';
+  var PR_PUNCTUATION = 'pun';
+  var PR_PLAIN = 'pln';
+  var PR_TAG = 'tag';
+  var PR_DECLARATION = 'dec';
+  var PR_SOURCE = 'src';
+  var PR_ATTRIB_NAME = 'atn';
+  var PR_ATTRIB_VALUE = 'atv';
+  var PR_NOCODE = 'nocode';
+
+
+The lang-rebol.js is built from the following files:
+
+  * General grammar is defined in template-lang-rebol.js
+
+  * All defined datatypes in GCP-datatypes.r
+
+  * Most defined keywords (Rebol functions) in GCP-keywords.r
+
+
+For datatypes:
+
+  * List of datatypes (intially) built from list_datatypes.r
+
+  * In nearly all cases the datatypes were assigned to PR_LITERAL topic.  However there were some exceptions:
+
+      - string!  -  PR_STRING
+
+      - set-word! - PR_DECLARATION
+
+
+For keywords... 
+
+  * keywords.r3 - a list of Rebol 3 function names with refinement variations (created by list_keywords.r3)
+
+  * GCP-datatypes.r created from keywords.r3 via create-GCP-keywords.r3
+
+  * GCP-datatypes.r had the following removed...
+
+    - functions? (ending in ? - issue with GCP keywords so create generic rule in template)
+
+    - function names of 1 char
+
+    - operators
+
+    - COMMENT  (rule for this in template)
+
+
+Some thoughts / caveats?
+
+  * Can imagine some regex won't work to well with utf-8 chars :(
+
+  * See not-working.html for known issues
+
+  * Perhaps don't have keywords defined? (however I think for Stackoverflow questions these will be helpful)
+
+
+This document is a overview.  See comments in scripts (mentioned above) for most up-to-date info.
+

@@ -1,38 +1,46 @@
-Whats needed?:
+# Rebol grammar for Google Code Prettifer
 
-- Using lang-lisp.js as starting point (recommended by GCP), create Rebol version
+## History
 
-- Send back to GCP as patch with test
+* Original started with a hack on lang-lisp.js syntax file
 
+* Now completely re-hacked from bottom up
 
-Story so far:
+* All syntax grammar (in lang-rebol.js) built from Rebol scripts
 
-- Created a lang-rebol.js with only slight amendments to Lisp version
-
-- Multi-line string { } works with caveat must use ^} for embedded closing brace.
-
-- Shebang! line added (as comment)
-
-- set-word: & :get-word with paths like block/1 added
-
-- 'literal (single quote word) added
-
-- Some Types available (see tests.html)
-
-- Only added few "statements" just to show it works! (see test-rebol.html)
-
-- Would like to build "statements" straight from Rebol
-
-- In fact it would be nice to build whole JS file from Rebol!!!
-
-- And may build RegEx grammar up from scratch again and keep it *simple* Rebol
-
-- So at moment just fudging my way around lang-lisp.js & other GCP syntax file
-  (No docs... so lots of groping around in dark!)
-
-- See not-working.html for stuff that doesn't work
+**NB. Important - Do not amend lang-rebol.js or any of the HTML files directly.  See build/ReadMe.txt on how to amend and rebuild these :)**
 
 
-To test - clone repo and open the test.html files in web browser.
+## Rules
 
-Google Code Prettify - https://code.google.com/p/google-code-prettify/
+* All datatypes (defined in build/GCP-datatypes.r) marked as LITERAL (with some exceptions)
+
+* All keywords (defined in build/GCP-keywords.r) marked as KEYWORD (with some exceptions)
+
+* Some naive Regex used to cover some syntax
+
+* All seems to work well for highlighting Rebol code in web pages (see test-?.html for working examples. See not-working.html for known issues)
+
+* See build/Rules.txt for more detailed rules that were applied
+
+
+## What next?
+
+- [x] Let Rebol community have a look
+
+- []  Then send test patch back to GCP
+
+- []  And if that all goes well then pester Stackoverflow to update their GCP :)
+
+
+## What to see?
+
+* To test - clone repo and open the test.html files in web browser.
+
+* Or for live test examples: http://draegtun.github.io/PrettifyRebol
+
+
+## Misc
+
+* Google Code Prettify - https://code.google.com/p/google-code-prettify/
+

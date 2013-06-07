@@ -1,11 +1,16 @@
 Revision history for PrettifyRebol
 
-0.0.4   NEXT
-        - Constants (marked as literals) added
+0.0.4   6-June-2013
+        - Completely rebuilt grammar definitions from bottom up
+        - Now all built from templates, for eg.
+        - All types built from build/GCP-datatypes.r
+        - All keywords (functions) built from build/GCP-keywords.r
+        - see build/ReadMe.txt for more info
 
 0.0.3   10-May-2013
         - Created build directory for "automation"
         - test html files are now built with Rebol script - create-test-html-files.r
+        - Constants (marked as literals) added
 
 0.0.2   9-May-2013    
         - Slight restructure + multline string improvement
@@ -13,5 +18,5 @@ Revision history for PrettifyRebol
         - types pair! and (partial) date! added
 
 0.0.1   8-May-2013    
-        - big bang! Taken lang-lisp.js and stared amended to Rebol
+        - big bang! Taken lang-lisp.js and amended to Rebol
         - All changes above are by Barry Walsh (draegtun) unless otherwise attributed.
