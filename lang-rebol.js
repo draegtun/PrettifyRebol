@@ -88,6 +88,8 @@ PR['registerLangHandler'](
          [PR['PR_LITERAL'], /^\#[\w\d\-]+\b/],
          // -- binary!
          [PR['PR_LITERAL'], /^\#\{(?:[^\}\\]|\\[\s\S])*(?:\}|$)/],
+         // -- literal!
+         [PR['PR_LITERAL'], /^\#\[(?:[^\]\\]|\\[\s\S])*(?:\]|$)/],
          // -- file!
          [PR['PR_LITERAL'], /^\%[\.\w\/\-\\]+/],
          // -- email!
@@ -105,6 +107,8 @@ PR['registerLangHandler'](
          [PR['PR_LITERAL'], /^\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)/],
          // -- lit-word!
          [PR['PR_LITERAL'], /^\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)/],
+         // -- refinement!
+         [PR['PR_LITERAL'], /^\/(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)/],
          // -- set-word!
          [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)\:\s/],
          //

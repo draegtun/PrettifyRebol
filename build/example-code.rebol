@@ -6,9 +6,9 @@ Rebol []
 foo: func [x] [x + x]
 baz: func ["baz function" x [integer!]] [x + x]
 duff: "duff"
-block: [a b c d :foo! :foo? :foo/bar/baz 'foo! 'foo? 'foo/bar/baz baz@example.com duff]
+block: [a b c d :foo! :foo? :foo/bar/baz 'foo! 'foo? 'foo/bar/baz baz@example.com /refinement path/to/2 duff]
 constants: [duff none true false on off yes no duff notnone one nope]
-hash-lit: [duff #"c" #{899AEFD8} 2#{10010110110010101001011011001011} #111-111-111 #SKU-1000 duff]
+hash-lit: [duff #"c" #{899AEFD8} 2#{10010110110010101001011011001011} #111-111-111 #SKU-1000 #[none] #[image! xx] #[duff] duff]
 files: [duff %file.txt %../blah/ %\reverse\path/ %file%20name.dat duff %/ %-hy.txt %_und.txt]
 long-str: {
   line 1 - if 1 = 1 [print "hello"]
@@ -24,6 +24,7 @@ series: compose ["one" 'one :foo (1 + 1) (baz xor~ 5 2)]
 bar: make object! [a: 1]
 block/1: 10
 replace/all block 'b 'B
+block/(1 + num!bers/1): constants/(1 + foo 2)
 comment {
   multiline comment
 }

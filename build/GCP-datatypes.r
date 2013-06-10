@@ -5,6 +5,7 @@ date-re: "\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}"  ; naive date! regex
 
 string-re: {\"(?:[^^\"\\]|\\[\s\S])*(?:\"|$)}
 brace-re:  "\{(?:[^^\}\\]|\\[\s\S])*(?:\}|$)"   ; TODO - could build this from string-re
+block-re:  "\[(?:[^^\]\\]|\\[\s\S])*(?:\]|$)"
 tag-re:    "\<(?:[^^\>\\]|\\[\s\S])*(?:\>|$)"   ; TODO - could build this from string-re
 
 types: compose/deep [
@@ -37,6 +38,7 @@ types: compose/deep [
                         (re join "\#" brace-re)  ;  any string allowed between #{} braces
                         ; NB. other bases not explictly needed (side effect elsewhere?)
                     ]
+    literal!        [PR_LITERAL (re join "\#" block-re)]  ; literal types -  #[none] #[error!]
     file!           [PR_LITERAL 
                         (re "\%[\.\w\/\-\\]+")  ; simple re %word (expected 1st letter of word)
                         ; TODO must try UNICODE/utf-8 filenames
@@ -61,6 +63,7 @@ types: compose/deep [
     ; also best last to avoid conflicts (in particular time!)
     get-word!       [PR_LITERAL (re "\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
     lit-word!       [PR_LITERAL (re "\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
+    refinement!     [PR_LITERAL (re "\/(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
     ; set-word! must come after get-word! & lit-word!
     set-word!       [PR_DECLARATION (re "(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)\:\s") ]
 ]

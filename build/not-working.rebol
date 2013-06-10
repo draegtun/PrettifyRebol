@@ -14,7 +14,7 @@ multline-str: {
 literal: [the'end]
 
 ok_filename: %file%20with%20space.txt
-bad_filename: %"file with space.txt"
+bad_filename: %"file with space.txt"   ; probably best as this anyway
 also: %1111.txt  ; allows leading numbers
 
 tuples: [333.333.333 444.444.444.444 555.555.555.555.555] ; only defined 3 & 4 tuples at moment
