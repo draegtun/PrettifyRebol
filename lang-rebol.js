@@ -71,11 +71,13 @@ PR['registerLangHandler'](
          // -- money!
          [PR['PR_LITERAL'], /^\$\d[\d\.\,\']*\b/],
          [PR['PR_LITERAL'], /^[\+\-\w]{1,4}\$\d[\d\.\,\']*\b/],
+         // -- date!
+         [PR['PR_LITERAL'], /^\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}\/\d{1,2}\:\d{1,2}\:\d{1,2}(\+|\-)\d{1,2}\:(00|30)\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}\/\d{1,2}\:\d{1,2}\:\d{1,2}\b/],
+         [PR['PR_LITERAL'], /^\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}\b/],
          // -- time!
          [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\:\d{1,2}\b/],
          [PR['PR_LITERAL'], /^\d{1,2}\:\d{1,2}\b/],
-         // -- date!
-         [PR['PR_LITERAL'], /^\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}\b/],
          // -- char!
          [PR['PR_LITERAL'], /^\#\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/],
          // -- pair!
@@ -83,7 +85,7 @@ PR['registerLangHandler'](
          // -- string!
          [PR['PR_STRING'], /^\"(?:[^\"\\]|\\[\s\S])*(?:\"|$)/],
          // -- issue!
-         [PR['PR_LITERAL'], /^\#[\w\d\-]+/],
+         [PR['PR_LITERAL'], /^\#[\w\d\-]+\b/],
          // -- binary!
          [PR['PR_LITERAL'], /^\#\{(?:[^\}\\]|\\[\s\S])*(?:\}|$)/],
          // -- file!
@@ -104,7 +106,7 @@ PR['registerLangHandler'](
          // -- lit-word!
          [PR['PR_LITERAL'], /^\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)/],
          // -- set-word!
-         [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*):/],
+         [PR['PR_DECLARATION'], /^(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)\:\s/],
          //
          // Above is the Rebol data types grammar.  
          // Below the grammar for type! (declarations)

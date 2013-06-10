@@ -19,7 +19,11 @@ also: %1111.txt  ; allows leading numbers
 
 tuples: [333.333.333 444.444.444.444 555.555.555.555.555] ; only defined 3 & 4 tuples at moment
 
-words-with~: xor~ 5 2   ; xor~ is defined in keyword grammar but GCP doesn't like it :(
+; Decided to make set-word! RE tighter so avoid pollution elsewere
+; NB. (though original did seem fine without this check)
+bad-setword:[print "must have space before block"] 
+good-setword: [print "I'm all good"]
+
 
 ; some keyword issues
 
@@ -38,6 +42,7 @@ foo: does [print]
 ; not implemented but may do in future
 
 ; see undefined types in GCP-datatypes.r
+; utf-8 usage
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
