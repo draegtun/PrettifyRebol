@@ -63,7 +63,7 @@ types: compose/deep [
     ; also best last to avoid conflicts (in particular time!)
     get-word!       [PR_LITERAL (re "\:(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
     lit-word!       [PR_LITERAL (re "\'(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
-    refinement!     [PR_LITERAL (re "\/(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
+    ;refinement!     [PR_LITERAL (re "\/(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)") ]
     ; set-word! must come after get-word! & lit-word!
     set-word!       [PR_DECLARATION (re "(?:[A-Za-z0-9=\-\!\?\_\*\+\.\/\'\~]*)\:\s") ]
 ]

@@ -23,8 +23,8 @@ schemes: [duff http://rebol.com ftp://ftp.ftp.com duff://blahblah duff]
 series: compose ["one" 'one :foo (1 + 1) (baz xor~ 5 2)]
 bar: make object! [a: 1]
 block/1: 10
+baz: block/(1 + length? duff)
 replace/all block 'b 'B
-block/(1 + num!bers/1): constants/(1 + foo 2)
 comment {
   multiline comment
 }

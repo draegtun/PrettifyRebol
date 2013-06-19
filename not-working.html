@@ -59,6 +59,20 @@ print: func [replace x] [print [replace x]]  ; this time "replace" is hi-lighted
 foo: does [print]
 ; NB - Keywords will be highlighted as keyword when preceded by whitespace
 
+xxx-replace: xxx-replace - 1  ; \b JS issue
+
+; number datatypes funnies
+num1: num2 + num2for
+
+; set-word! path!
+block/(1 + baz/1): constants/(1 + length? foo)
+
+; type! issues
+num!ber: num!ber + 1
+
+; refinements! have issues so not included
+ref: [/refinement]
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; not implemented but may do in future
