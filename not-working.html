@@ -59,7 +59,14 @@ print: func [replace x] [print [replace x]]  ; this time "replace" is hi-lighted
 foo: does [print]
 ; NB - Keywords will be highlighted as keyword when preceded by whitespace
 
-xxx-replace: xxx-replace - 1  ; \b JS issue
+; refinements! have issues so not included
+ref: [/refinement]
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; other edge cases just have to live with (for now)
+
+xxx-replace: xxx-replace - no-xxx-replacethis-xxxreplace-foo  ; \b JS issue
 
 ; number datatypes funnies
 num1: num2 + num2for
@@ -70,8 +77,6 @@ block/(1 + baz/1): constants/(1 + length? foo)
 ; type! issues
 num!ber: num!ber + 1
 
-; refinements! have issues so not included
-ref: [/refinement]
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -82,14 +87,8 @@ ref: [/refinement]
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; not implemented but happy this way!
-; 
-; Nothing yet!
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; tag! - Can't do :(
-; * GCP doesn't like html tags unless they're esacpe
+; * GCP doesn't like html tags unless they're escape
 ; * ref: http://stackoverflow.com/questions/7787834/using-google-prettify-to-display-html-and-css-code-do-i-have-to-replace-every
 
 
