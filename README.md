@@ -2,22 +2,32 @@
 
 ## History
 
-* Original started with a hack on lang-lisp.js syntax file
+* Started with a hack on lang-lisp.js syntax file
 
 * Now completely re-hacked from bottom up
 
 * All syntax grammar (in lang-rebol.js) built from Rebol scripts
 
-**NB. Important - Do not amend lang-rebol.js or any of the HTML files directly.  See build/ReadMe.txt on how to amend and rebuild these :)**
+## Contributors
+
+* Rebol3 used to build lang-rebol.js (GCP grammar) & HTML files (see build/)
+
+* So do not amend lang-rebol.js or any of the HTML files directly! **Important**  
+
+* See build/ReadMe.txt on how to update and rebuild JS & HTML files
 
 
 ## Rules
 
-* All datatypes (defined in build/GCP-datatypes.r) marked as LITERAL (with some exceptions)
+* General rule... KISS :)
 
-* All keywords (defined in build/GCP-keywords.r) marked as KEYWORD (with some exceptions)
+* All datatypes! (defined in build/GCP-datatypes.r) marked as LITERAL (with some exceptions)
 
-* Some naive Regex used to cover some syntax
+* All keywords (Rebol functions - defined in build/GCP-keywords.r) marked as KEYWORD (with some exceptions)
+
+* Rest of Rebol grammar defined in build/template-lang-rebol.js
+
+* Some naive Regex used to cover some syntax rules
 
 * All seems to work well for highlighting Rebol code in web pages (see test-?.html for working examples. See not-working.html for known issues)
 

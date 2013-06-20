@@ -1,5 +1,14 @@
 Revision history for PrettifyRebol
 
+0.0.5   20-June-2013
+        - Thanks to rgchris for eyeballing and providing list of enhancements
+          https://trello.com/c/X0IUVu1s
+        - date+time notation regression fixed
+        - added (but then removed) refinement! regex (has side effects)
+        - literal types added, e.g. #[none] #[image! ...]
+        - not-working.html updated with more issues (side effects!)
+        - real-example.html added to give better flavour of whats going on
+
 0.0.4   6-June-2013
         - Completely rebuilt grammar definitions from bottom up
         - Now all built from templates, for eg.
