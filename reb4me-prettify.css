@@ -1,0 +1,58 @@
+/* Pretty printing styles. Used with prettify.js. */
+/* Based on style by Christopher Ross-Gill for http://reb4.me/cc */
+
+@import url('http://fonts.googleapis.com/css?family=Inconsolata:400,700');
+
+/* declaration - blue, bold */
+pre .dec, code .dec { font-weight: bold; color: #004; }
+
+/* lang-rebol.js-defined custom type for header word (e.g. Rebol, Red) */
+pre .hdr, code .hdr { font-weight: bold; color: #004; } 
+
+/* comment - grey italic */
+pre .com, code .com { color: #999; font-style: italic; } 
+
+/* keyword - was red (#900) but disabled until paths like question/get
+   do not highlight the "get" */
+pre .kwd, code .kwd { color: #000; }
+
+pre .opn, code .opn { color: #000; } /* open brace - black */
+pre .clo, code .clo { color: #000; } /* close brace - black */
+pre .lit, code .lit { color: #072; } /* literals - green */
+pre .str, code .str { color: #072; } /* strings - also green */
+pre .tag, code .tag { color: #09A; } /* tag - bright cyan */
+pre .typ, code .typ { color: #736; } /* datatype - maroon */
+pre .pln, code .pln { color: #000; } /* plain code - black */ 
+
+/* lang-rebol.js uses "embedded source" for lit-word - purple */
+pre .src, code .src { color: #606; } 
+
+/* lang-rebol.js uses "attribute name" for refinement - dark yellow */
+/* Note: Currently functionality is buggy and disabled */
+pre .atn, code .atn { color: #972; }
+
+/* lang-rebol.js uses "attribute value" for get-word - black */
+pre .atv, code .atv { color: #000; }
+
+/* lang-rebol.js uses "punctuation" for shell - gray */
+pre .pun, code .pun { color: #777; }
+
+/* round border is from sunburst theme by David Leibovic */
+pre.prettyprint, code.prettyprint {
+	background-color: #FAFAFA;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	border-radius: 8px;
+
+	font: 1em "Inconsolata","Courier New",fixed;
+}
+
+pre.prettyprint {
+	width: 95%;
+	margin: 1em auto;
+	padding: 1em;
+	white-space: pre-wrap;
+}
