@@ -5,7 +5,7 @@ re: func [s /i] [rejoin compose ["/^^" (s) "/" either i ["i"][""]]]   ; little h
 date-re: "\d{1,2}[\-\/](\d{1,2}|\w{3,9})[\-\/]\d{2,4}"  ; naive date! regex
 
 string-re: {\"(?:[^^\"\\]|\\[\s\S])*(?:\"|$)}
-brace-re:  "\{(?:[^^\}\^^]|\\[\s\S])*(?:\}|$)"   ; TODO - could build this from string-re
+brace-re:  "\{(?:[^^\}\^^]|\^^[\s\S])*(?:\}|$)"   ; TODO - could build this from string-re
 block-re:  "\[(?:[^^\]\\]|\\[\s\S])*(?:\]|$)"
 tag-re:    "\<(?:[^^\>\\]|\\[\s\S])*(?:\>|$)"   ; TODO - could build this from string-re
 number-re: "(?:[.,]\d+|\d+['\d]*(?:[.,]\d*)?)(?:e[-+]?\d+)?"
