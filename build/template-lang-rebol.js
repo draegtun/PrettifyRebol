@@ -49,42 +49,59 @@
  *
  */
 
+var REB = {
+    'word!': "lit dt-word",
+    'get-word!': "lit dt-get-word",
+    'function!': "kwd dt-function",
+    'native!': "kwd dt-native",
+    'op!': "kwd dt-native",
+    'datatype!': "kwd dt-datatype",
+    'binary!': "str dt-binary",
+    'bitset!': "str dt-bitset",
+    'char!': "str dt-char",
+    'date!': "str dt-date",
+    'decimal!': "lit dt-decimal",
+    'email!': "str dt-email",
+    'file!': "str dt-file",
+    'integer!': "lit dt-integer",
+    'issue!': "str dt-issue",
+    'lit-word!': "lit dt-lit-word",
+    'logic!': "lit dt-logic",
+    'money!': "lit dt-money",
+    'none!': "lit dt-none",
+    'number!': "lit dt-integer",
+    'pair!': "lit dt-pair",
+    'percent!': "lit dt-percent",
+    'string!': "str dt-string",
+    'tag!': "tag dt-tag",
+    'time!': "lit dt-time",
+    'tuple!': "lit dt-tuple",
+    'url!': "str dt-url",
+    'refinement!': "lit dt-refinement",
+    'set-word!': "dec dt-set-word",
+    'set-path!': "fun dt-set-path",
+    'rebol!': "kwd dt-rebol",
+    'comment!': "com dt-cmt"
+};
+
 PR['registerLangHandler'](
     PR['createSimpleLexer'](
         [
          // Rebol block/parens.  Is opn/clo really needed for Rebol?
          ['opn',             /^[\(\[]+/, null, '(['],
+         ['opn',             /^#\[]+/,],
          ['clo',             /^[\)\]]+/, null, ')]'],
          //
          // Whitespace
          [PR['PR_PLAIN'],       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
          //
          // Multi-line string {braces} - allowed within:  { ^{ ^}  
-         [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}'],
-        ],
-        [
-         //
-         // Schemes ("Generic" RE) - Must be before get-word! to avoid conflict
-         [PR['PR_LITERAL'], /^\w+\:\/\/[\w\d\+\-\.\,\%\/]+\b/],
+         // [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}'],
+    ],
+    [
 !!!types!!!
          //
          // Above is the Rebol data types grammar.  
-         // Below the grammar for type! (declarations)
-         [PR['PR_TYPE'],  /\b(?:[A-Za-z0-9=\-\?\_\*\+\.\/]+)\!/],
-!!!keywords!!!
-         //
-         // Constants (as literals! - there is no Constants token in GCP)
-         [PR['PR_LITERAL'], /^\b(?:none|true|false|yes|no|on|off)\b/],
-         //
-         // Multi-line comment
-         [PR['PR_COMMENT'],      /^comment\s*\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/],
-         //
-         // Script tag (shebang!)
-         [PR['PR_COMMENT'], /^#!(?:.*)/],
-         //
-         // A line comment that starts with ;
-         [PR['PR_COMMENT'],     /^;[^\r\n]*/, null, ';'],
-         //
          // Punctuation (from lisp)
          [PR['PR_PUNCTUATION'], /^[^\w\t\n\r \xA0()\"\\\';]+/]
         ]),

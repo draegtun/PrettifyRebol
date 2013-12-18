@@ -10,6 +10,10 @@ gcp-grammar-string: func [name regex-string] [
     rejoin ["[PR['" name "'], " regex-string "],"]
 ]
 
+reb-grammar-string: func [name [datatype! string!] regex [string!]][
+    rejoin ["[REB['" name "'], " regex "],"]
+]
+
 make-types-string: has [types buf] [
     buf: make-string-buffer
     buf/indent-with: "         "
@@ -28,9 +32,10 @@ make-types-string: has [types buf] [
         ; GCP grammar line
         context [
             name:  to-string take action  ; GCP rule name
+            name: mold type
             ; can have multi regex for each rule
             foreach regex action [
-                buf/push gcp-grammar-string name to-string regex
+                buf/push reb-grammar-string name to-string regex
             ]
         ]
     ]
@@ -40,9 +45,9 @@ make-types-string: has [types buf] [
 
 make-keywords-string: has [keywords buf string] [
     buf: make-string-buffer
-    buf/indent-with: "         "
-    buf/push "//"
-    buf/push "// Keywords"
+    ; buf/indent-with: "         "
+    ; buf/push "//"
+    ; buf/push "// Keywords"
 
     ; keywords provided are just funcs + ops (no types!)
     ; Just rebol3 and includes all refinements and excludes all functions? (ending with ?)
@@ -56,7 +61,7 @@ make-keywords-string: has [keywords buf string] [
 
     ;buf/push gcp-grammar-string "PR_KEYWORD" "/^^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null"
     remove back tail string  ; remove trailing |
-    buf/push gcp-grammar-string "PR_KEYWORD" rejoin ["/\b(?:" string ")\s/, null"]
+    buf/push rejoin ["\b(?:" string ")(?![A-Za-z0-9\-])"]
 
     ;// Keywords
     ;[PR['PR_KEYWORD'],     /^(?:func|print|foreach|make|replace\/all|compose|reduce|comment|probe)\b/, null],
@@ -72,7 +77,7 @@ make-keywords-string: has [keywords buf string] [
 
 js: make-fulfil %template-lang-rebol.js [
     'types      (make-types-string)
-    'keywords   (make-keywords-string)
+    ; 'keywords   (make-keywords-string)
 ]
 
 write %lang-rebol.js js/fulfil []
