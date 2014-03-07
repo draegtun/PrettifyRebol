@@ -87,10 +87,13 @@ num!ber: num!ber + 1
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; tag! - Can't do :(
+; tag! 
 ; * GCP doesn't like html tags unless they're escape
 ; * ref: http://stackoverflow.com/questions/7787834/using-google-prettify-to-display-html-and-css-code-do-i-have-to-replace-every
+; Below use html entities
 
+simple-tag: &lt;div id="class"&gt;testing&lt;/div&gt;
+nested-tag: &lt;div id="class"&gt;&lt;span&gt;testing&lt;span&gt;&lt;/div&gt;
 
 ; below should highlight correctly! (just a highlighting placeholder!)
 print "hello world"

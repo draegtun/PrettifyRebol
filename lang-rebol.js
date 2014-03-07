@@ -49,15 +49,48 @@
  *
  */
 
-(
-function(PR,REB){
+var REB = {
+    'word!': "lit dt-word",
+    'get-word!': "lit dt-get-word",
+    'function!': "kwd dt-function",
+    'native!': "kwd dt-native",
+    'op!': "kwd dt-native",
+    'datatype!': "kwd dt-datatype",
+    'binary!': "str dt-binary",
+    'bitset!': "str dt-bitset",
+    'char!': "str dt-char",
+    'date!': "str dt-date",
+    'decimal!': "lit dt-decimal",
+    'email!': "str dt-email",
+    'file!': "str dt-file",
+    'integer!': "lit dt-integer",
+    'issue!': "str dt-issue",
+    'lit-word!': "lit dt-lit-word",
+    'logic!': "lit dt-logic",
+    'money!': "lit dt-money",
+    'none!': "lit dt-none",
+    'number!': "lit dt-integer",
+    'pair!': "lit dt-pair",
+    'percent!': "lit dt-percent",
+    'string!': "str dt-string",
+    'tag!': "tag dt-tag",
+    'time!': "lit dt-time",
+    'tuple!': "lit dt-tuple",
+    'url!': "str dt-url",
+    'refinement!': "lit dt-refinement",
+    'set-word!': "dec dt-set-word",
+    'set-path!': "fun dt-set-path",
+    'rebol!': "kwd dt-rebol",
+    'comment!': "com dt-cmt"
+};
 
 PR['registerLangHandler'](
-    PR['createSimpleLexer']([
+    PR['createSimpleLexer'](
+        [
          // Rebol block/parens.  Is opn/clo really needed for Rebol?
-         ['opn punct',             /^[\(\[]+/, null, '(['],
-         ['opn punct',             /^#\[]+/,],
-         ['clo punct',             /^[\)\]]+/, null, ')]'],
+         ['opn',             /^[\(\[]+/, null, '(['],
+         ['opn',             /^#\[]+/,],
+         ['clo',             /^[\)\]]+/, null, ')]'],
          //
          // Whitespace
          [PR['PR_PLAIN'],       /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
@@ -73,15 +106,14 @@ PR['registerLangHandler'](
          [REB['comment!'], /^;[^\r\n]*/],
          [REB['comment!'], /^comment\s*\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/],
          [REB['comment!'], /^comment\s*\[(?:[^\]\\]|\\[\s\S])*(?:\]|$)/],
-         [REB['comment!'], /^\*\*[^\r\n]*/],
          // -- logic!
          [REB['logic!'], /^#\[(?:true|false|yes|no|on|off)\]/],
          // -- none!
          [REB['none!'], /^#\[none\]/],
          // -- char!
-         [REB['char!'], /^#"(?:[^\^"]|\^(?:[\^\"\/\-\[\]@A-Z]|\((?:[0-9A-F]{2,4}|tab|newline)\)))"/i],
+         [REB['char!'], /^#"(?:[^^"]|\^(?:[\^"\/\-A-Z]|\((?:[0-9A-F]{2,4}|tab|newline)\)))"/i],
          // -- string!
-         [REB['string!'], /^"(?:\^(?:[\^\"\/\-\[\]@A-Z]|\((?:[0-9A-F]{2,4}|tab|newline)\))|[^"\\]+|\\[\s\S])*(?:"|$)/],
+         [REB['string!'], /^"(?:[^"\\]|\\[\s\S])*(?:"|$)/],
          [REB['string!'], /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/],
          // -- comment!
          [REB['comment!'], /^<!--(?:[^-]|-(?!->))+-->/],
@@ -141,47 +173,5 @@ PR['registerLangHandler'](
          // Above is the Rebol data types grammar.  
          // Punctuation (from lisp)
          [PR['PR_PUNCTUATION'], /^[^\w\t\n\r \xA0()\"\\\';]+/]
-    ]),
+        ]),
     ['rebol', 'red']);
-
-}
-
-)(
-
-PR,{
-    'word!': "lit dt-word",
-    'get-word!': "lit dt-get-word",
-    'function!': "kwd dt-function",
-    'native!': "kwd dt-native",
-    'op!': "kwd dt-native",
-    'datatype!': "kwd dt-datatype",
-    'binary!': "str dt-binary",
-    'bitset!': "str dt-bitset",
-    'char!': "str dt-char",
-    'date!': "str dt-date",
-    'decimal!': "lit dt-decimal",
-    'email!': "str dt-email",
-    'file!': "str dt-file",
-    'integer!': "lit dt-integer",
-    'issue!': "str dt-issue",
-    'lit-word!': "lit dt-lit-word",
-    'logic!': "lit dt-logic",
-    'money!': "lit dt-money",
-    'none!': "lit dt-none",
-    'number!': "lit dt-integer",
-    'pair!': "lit dt-pair",
-    'percent!': "lit dt-percent",
-    'string!': "str dt-string",
-    'tag!': "tag dt-tag",
-    'time!': "lit dt-time",
-    'tuple!': "lit dt-tuple",
-    'url!': "str dt-url",
-    'refinement!': "lit dt-refinement",
-    'set-word!': "dec dt-set-word",
-    'set-path!': "fun dt-set-path",
-    'rebol!': "kwd dt-rebol",
-    'comment!': "com dt-cmt",
-	'space!': "clo dt-space"
-}
-
-)
