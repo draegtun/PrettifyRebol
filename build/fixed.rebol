@@ -1,25 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="https://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" />
-        <link rel="stylesheet" type="text/css" href="https://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css" />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
-        <script type="text/javascript" src="lang-rebol.js"></script>
-
-        <script type="text/javascript">
-        jQuery(document).ready(function () {
-            // apply syntax highlighting
-            prettyPrint();
-        });
-        </script>
-
-    </head>
-    <body>
-        <h1>Rebol</h1>
-        <h2>Highlighting now working in lang-rebol.js (using sunburst CSS)</h2>
-
-        <pre class="prettyprint lang-rebol">
 Rebol []
 
 ; Fixed issues - kept here for regression checking
@@ -87,6 +65,3 @@ num!ber: num!ber + 1
 
 ; below should highlight correctly! (just a highlighting placeholder!)
 print "hello world"
-        </pre>
-    </body>
-</html>

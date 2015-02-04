@@ -36,6 +36,12 @@ write %not-working.html html/fulfil [
     'genre         "Highlighting not working in lang-rebol.js (using sunburst CSS)"
 ]
 
+write %fixed.html html/fulfil [
+    'css           (rejoin [html/default-snippets/css newline read-snippet %snippets/sunburst-css.html])
+    'example-code  (read-snippet %fixed.rebol)
+    'genre         "Highlighting now working in lang-rebol.js (using sunburst CSS)"
+]
+
 write %real-example.html html/fulfil [
     'css           (rejoin [html/default-snippets/css newline read-snippet %snippets/desert-css.html])
     'example-code  (read-snippet %real-example.rebol)
