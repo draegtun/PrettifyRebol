@@ -42,6 +42,7 @@
  *
  * Contributors
  * - draegtun (Barry Walsh)
+ * - rgchris  (Christopher Ross-Gill)
  * 
  * Grammar - http://reb4.me/r/rebol#Value
  *
@@ -55,7 +56,7 @@ var REB = {
     'function!': "kwd dt-function",
     'native!': "kwd dt-native",
     'op!': "kwd dt-native",
-    'datatype!': "kwd dt-datatype",
+    'datatype!': "typ dt-datatype",
     'binary!': "str dt-binary",
     'bitset!': "str dt-bitset",
     'char!': "str dt-char",
