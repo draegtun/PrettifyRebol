@@ -82,7 +82,8 @@ var REB = {
     'set-word!': "dec dt-set-word",
     'set-path!': "fun dt-set-path",
     'rebol!': "kwd dt-rebol",
-    'comment!': "com dt-cmt"
+    'comment!': "com dt-cmt",
+    'literal-block-hack': "opn"
 };
 
 PR['registerLangHandler'](
@@ -90,7 +91,7 @@ PR['registerLangHandler'](
         [
          // Rebol block/parens.  Is opn/clo really needed for Rebol?
          ['opn',             /^[\(\[]+/, null, '(['],
-         ['opn',             /^#\[/, null, '#['],
+         //['opn',             /^#\[/, null, '#['],
          ['clo',             /^[\)\]]+/, null, ')]'],
          //
          // Whitespace
@@ -100,6 +101,7 @@ PR['registerLangHandler'](
          // [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}'],
     ],
     [
+         [REB['literal-block-hack'], /^#\[/],
          //
          // Types
          // -- comment!
