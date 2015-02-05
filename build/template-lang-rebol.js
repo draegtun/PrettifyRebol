@@ -90,7 +90,7 @@ PR['registerLangHandler'](
         [
          // Rebol block/parens.  Is opn/clo really needed for Rebol?
          ['opn',             /^[\(\[]+/, null, '(['],
-         ['opn',             /^#\[]+/,],
+         ['opn',             /^#\[/, null, '#['],
          ['clo',             /^[\)\]]+/, null, ')]'],
          //
          // Whitespace
