@@ -42,6 +42,7 @@
  *
  * Contributors
  * - draegtun (Barry Walsh)
+ * - rgchris  (Christopher Ross-Gill)
  * 
  * Grammar - http://reb4.me/r/rebol#Value
  *
@@ -55,7 +56,7 @@ var REB = {
     'function!': "kwd dt-function",
     'native!': "kwd dt-native",
     'op!': "kwd dt-native",
-    'datatype!': "kwd dt-datatype",
+    'datatype!': "typ dt-datatype",
     'binary!': "str dt-binary",
     'bitset!': "str dt-bitset",
     'char!': "str dt-char",
@@ -81,7 +82,8 @@ var REB = {
     'set-word!': "dec dt-set-word",
     'set-path!': "fun dt-set-path",
     'rebol!': "kwd dt-rebol",
-    'comment!': "com dt-cmt"
+    'comment!': "com dt-cmt",
+    'literal-block-hack': "opn"
 };
 
 PR['registerLangHandler'](
@@ -89,7 +91,7 @@ PR['registerLangHandler'](
         [
          // Rebol block/parens.  Is opn/clo really needed for Rebol?
          ['opn',             /^[\(\[]+/, null, '(['],
-         ['opn',             /^#\[]+/,],
+         //['opn',             /^#\[/, null, '#['],
          ['clo',             /^[\)\]]+/, null, ')]'],
          //
          // Whitespace
@@ -99,6 +101,7 @@ PR['registerLangHandler'](
          // [PR['PR_STRING'],      /^\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/, null, '{}'],
     ],
     [
+         [REB['literal-block-hack'], /^#\[/],
          //
          // Types
          // -- comment!
@@ -106,10 +109,6 @@ PR['registerLangHandler'](
          [REB['comment!'], /^;[^\r\n]*/],
          [REB['comment!'], /^comment\s*\{(?:[^\}\^]|\^[\s\S])*(?:\}|$)/],
          [REB['comment!'], /^comment\s*\[(?:[^\]\\]|\\[\s\S])*(?:\]|$)/],
-         // -- logic!
-         [REB['logic!'], /^#\[(?:true|false|yes|no|on|off)\]/],
-         // -- none!
-         [REB['none!'], /^#\[none\]/],
          // -- char!
          [REB['char!'], /^#"(?:[^^"]|\^(?:[\^"\/\-A-Z]|\((?:[0-9A-F]{2,4}|tab|newline)\)))"/i],
          // -- string!
