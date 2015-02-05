@@ -28,18 +28,6 @@ types: compose/deep [
     ]
     ;  type_literal
     
-    ;  logic
-    logic! [
-        PR_LITERAL
-        (re "#\[(?:true|false|yes|no|on|off)\]")
-    ]
-    
-    ;  none
-    none! [
-        PR_LITERAL
-        (re "#\[none\]")
-    ]
-    
     ;  strings
     ;      character
     char! [
