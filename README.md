@@ -52,5 +52,5 @@
 
 ## Misc
 
-* Google Code Prettify - https://code.google.com/p/google-code-prettify/
+* Google Code Prettify - https://github.com/google/code-prettify
 
