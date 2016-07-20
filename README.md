@@ -38,7 +38,7 @@
 
 - [x] Let Rebol community have a look
 
-- []  Then send test patch back to GCP
+- [x]  Then send test patch back to GCP
 
 - []  And if that all goes well then pester Stackoverflow to update their GCP :)
 
@@ -52,5 +52,5 @@
 
 ## Misc
 
-* Google Code Prettify - https://code.google.com/p/google-code-prettify/
+* Google Code Prettify - https://github.com/google/code-prettify
 

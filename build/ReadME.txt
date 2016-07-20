@@ -3,8 +3,8 @@ The following docs require you to be in ./build subdirectory
 
 * Rebuild lang-rebol.js and HTML files
 
-  $ r3 build-test-html-files.r3
-  $ r3 build-lang-rebol-js.r3
+  $ r3 build-test-html-files.reb
+  $ r3 build-lang-rebol-js.reb
 
   Where "r3" is your local Rebol3 interpreter (with -qs)
 

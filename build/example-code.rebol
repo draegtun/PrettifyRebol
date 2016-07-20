@@ -18,7 +18,7 @@ long-str: {
 print length? long-str  ; end of line comment
 the-end: [duff 25-Dec-2012 1-1-12 2/2/2002 31-December-1999 00:00:00 23:59 24-May-2013/16:41:52+1:00 duff]
 num!bers: [duff 1 0.1 10x90 1.1x12,22 99% 1'000.00 1'000'000 1,1 1.1.1 -1 +10.5 -10% 1'000% duff]
-money: [duff $100.00 +$100 -GBP$99.99 US$1'000.99 $100,001 duff $foo +$bar]
+money: [duff $100.00 +$100 -GBP$99.99 US$1'000.99 $100,001 duff]
 schemes: [duff http://rebol.com ftp://ftp.ftp.com duff://blahblah duff]
 series: compose ["one" 'one :foo (1 + 1) (baz xor~ 5 2)]
 bar: make object! [a: 1]
