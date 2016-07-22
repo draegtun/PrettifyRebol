@@ -1,5 +1,11 @@
 Revision history for PrettifyRebol
 
+0.1.0   20-Jul-2015
+        - Changed to new CDN.  Removed jQuery & PrettyPrint() call
+        - Submitted PR to new Github repo...
+          https://github.com/google/code-prettify/pull/445
+        - So bumped version to 0.1.0 
+
 0.0.5   20-June-2013
         - Thanks to rgchris for eyeballing and providing list of enhancements
           https://trello.com/c/X0IUVu1s
